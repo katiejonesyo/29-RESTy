@@ -1,57 +1,49 @@
 import React, { Component } from 'react';
-import { getRequest } from '../services/api';
-import List from '../components/displays/List';
-import Controls from '../components/controls/Controls';
-import Response from '../components/displays/Response';
-
-
+import Form from '../components/presentational/Form';
+import Header from '../components/presentational/Header';
+import Fetch from '../services/Fetch';
+import Results from '../components/presentational/Results';
 
 export default class Resty extends Component {
+  state={
+    url: '',
+    method: '',
+    json: '',
+    results: ''
+  }
 
-    state = {
-        url: '',
-        method: '',
-        response: '',
-        history: [],
-        click: false
-    }
+  handleChange = ({ target }) => {
+    this.setState({ [target.name]: target.value });
+  }
 
-    handleChange = (e) => {
- e.preventDefault();
- this.setState({ [e.target.name]: e.target.value })
-    }
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.fetch();
+  }
 
-    handleClick = async() => {
-       if (!this.state.url || !this.state.method)
-        return alert('Fill out required fields.')
+  fetch = () => {
+    const { url, method, json } = this.state;
+    Fetch(url, method, json)
+      .then(res => this.setState({ results: JSON.stringify(res) }));
+  }
 
-        this.setState(state =>({ 
-            history: [...state.history, {url: state.url, method:state.method }],
-            click:true }))
+  render() {
+    const { url, method, json, results } = this.state;
 
-        if (this.state.method === 'GET'){
-            const response = await getRequest(this.state.url)
-            this.setState({ response: respose })
-        }
-    }
-
-    render() {
-        const { click, history, response } = this.state;
-        return (
-            <>
-            <h1> Resty </h1>
-            <div> Resty 
-                <Controls onChange={this.handleChange} onClick={this.onClick} />
-                { click && 
-                  <>
-                  <List history={history} />
-                  <Response apiResponse={response}/>
-                  </>
-                }
-            </div>
-            </>
-        )
-    }
+    return (
+      <>
+        <Header />
+        <Form 
+          url={url}
+          method={method}
+          json={json}
+          onSubmit={this.handleSubmit}
+          onChange={this.handleChange}
+        />
+        <Results results={results} />
+      </>
+    );
+  }
 }
 
 
