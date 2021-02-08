@@ -10,20 +10,16 @@ const Form = ({ url, method, json, onSubmit, onChange }) => {
         <section>
           <div>
             <label htmlFor="GET">
-              <input id="GET" type="radio" name="method" value="GET" checked={method === 'GET'} onChange={onChange} />
-            GET
+              <input id="GET" type="radio" name="method" value="GET" checked={method === 'GET'} onChange={onChange} />GET
             </label>
             <label>
-              <input type="radio" name="method" value="PUT" checked={method === 'PUT'} onChange={onChange} />
-            PUT
+              <input type="radio" name="method" value="PUT" checked={method === 'PUT'} onChange={onChange} />PUT
             </label>
             <label>
-              <input type="radio" name="method" value="POST" checked={method === 'POST'} onChange={onChange} />
-            POST
+              <input type="radio" name="method" value="POST" checked={method === 'POST'} onChange={onChange} />POST
             </label>
             <label>
-              <input type="radio" name="method" value="DELETE" checked={method === 'DELETE'} onChange={onChange} />
-            DELETE
+              <input type="radio" name="method" value="DELETE" checked={method === 'DELETE'} onChange={onChange} />DELETE
             </label>
           </div>
           <button>Send!</button>

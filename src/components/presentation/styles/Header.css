@@ -1,0 +1,28 @@
+* {
+    background-color: rgb(201, 201, 201);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.Header {
+    background-color: #ff0000;
+    padding-bottom: 20px;
+    
+    .heading {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+    
+    h1 {
+        background-color: #ff0000;
+        display: inline-block;
+        font-weight: 700;
+        margin: .5em auto;
+        text-align: center;
+    }
+}
+
