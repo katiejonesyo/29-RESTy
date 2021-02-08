@@ -17,20 +17,11 @@ describe('Resty container', () => {
     const getInput = screen.getByLabelText('GET');
     userEvent.click(getInput);
 
-    userEvent.click(screen.getByText('Ok!'));
+    userEvent.click(screen.getByText('Send!'));
 
     return waitFor(() => {
-      expect(screen.getByText('
-      {"userId":1,
-      "id":1,
-      "title":"delectus aut autem",
-      "completed":false}')).toHaveTextContent('
-      {"userId":1,
-      "id":1,
-      "title":"delectus aut autem",
-      "completed":false}');
+      expect(screen.getByText('{"userId":1,"id":1,"title":"delectus aut autem","completed":false}')).toHaveTextContent('{"userId":1,"id":1,"title":"delectus aut autem","completed":false}');
     });
   });
 });
-
 

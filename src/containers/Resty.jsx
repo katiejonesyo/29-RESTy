@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Form from '../components/presentational/Form';
-import Header from '../components/presentational/Header';
+import Form from '../components/presentation/form/Form';
+import Header from '../components/presentation/Header';
 import Fetch from '../services/Fetch';
-import Results from '../components/presentational/Results';
+import Results from '../components/presentation/results/Results';
 
 export default class Resty extends Component {
   state={
